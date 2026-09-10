@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retention — AI Accountant Product Metrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
+</head>
+<body>
+<div class="page">
+  <div class="frame">
+    <header class="topbar">
+      <div class="brand">
+        <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Open sections menu" aria-expanded="false" aria-controls="side-nav">☰</button>
+        <span class="brand-strong">AI Accountant</span>
+        <span class="brand-sep" aria-hidden="true"></span>
+        <span class="brand-sub">Product Metrics</span>
+      </div>
+      <div class="top-right">
+        <nav class="menus" aria-label="Sections">
+          <a class="menu active" href="#" aria-current="page">Retention</a>
+        </nav>
+        <button id="theme-toggle" class="top-btn" type="button" aria-pressed="true">Light</button>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="title-row">
+        <h1 class="page-title">Retention</h1>
+        <div class="week-filter">
+          <label class="week-filter-label" for="activation-weeks">Activation weeks</label>
+          <select id="activation-weeks" class="week-filter-select">
+            <option value="all">All</option>
+            <option value="last8">Last 8</option>
+            <option value="last12">Last 12</option>
+          </select>
+        </div>
+      </div>
+
+      <section class="kpis" aria-label="Retention summary">
+        <div class="kpi">
+          <div class="kpi-label">Activated</div>
+          <div class="kpi-value" data-summary="activated">—</div>
+          <div class="kpi-subline" data-summary-sub="activated">of client companies (staff-only already out).</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Activation rate</div>
+          <div class="kpi-value" data-summary="activation-rate">—</div>
+          <div class="kpi-subline">first Accounting Sync / client companies (staff-only already out).</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Median TTV</div>
+          <div class="kpi-value" data-summary="median-ttv">—</div>
+          <div class="kpi-subline">Company Created → first Accounting Sync.</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Week-8 retention</div>
+          <div class="kpi-value" data-summary="week8-retention">—</div>
+          <div class="kpi-subline" data-summary-sub="week8">latest mature cohort with a week-8 cell.</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Recon among activated</div>
+          <div class="kpi-value" data-summary="recon-rate">—</div>
+          <div class="kpi-subline">at least one Recon Processed.</div>
+        </div>
+      </section>
+
+      <main class="main" id="main">
+        <p id="api-error" class="api-error" hidden>API down. Heatmap unavailable. Check the service and reload.</p>
+        <div id="app-views">
+          <section class="panel" aria-labelledby="heatmap-heading">
+            <h2 id="heatmap-heading" class="panel-title">Retention heatmap</h2>
+            <div class="table-wrap">
+              <table id="heatmap">
+                <thead>
+                  <tr>
+                    <th scope="col">Cohort week</th>
+                    <th scope="col">n</th>
+                    <th scope="col">Week 0</th>
+                    <th scope="col">Week 1</th>
+                    <th scope="col">Week 2</th>
+                    <th scope="col">Week 3</th>
+                    <th scope="col">Week 4</th>
+                    <th scope="col">Week 5</th>
+                    <th scope="col">Week 6</th>
+                    <th scope="col">Week 7</th>
+                    <th scope="col">Week 8</th>
+                  </tr>
+                </thead>
+                <tbody id="heatmap-body"></tbody>
+              </table>
+            </div>
+            <p id="heatmap-empty" class="empty" hidden>No retention data yet. The heatmap is empty. Try reloading in a little while.</p>
+            <div class="captions">
+              <p class="caption">Rows are activation cohort weeks (oldest first). Columns are weeks since activation (0–8).</p>
+              <p class="caption">Click a heatmap cell to open the company list.</p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="side-nav" id="side-nav" role="dialog" aria-modal="true" aria-labelledby="side-nav-title" hidden>
+  <div class="side-nav-head">
+    <div class="side-nav-brand">
+      <span class="side-nav-title" id="side-nav-title">AI Accountant</span>
+      <span class="side-nav-context">Product Metrics</span>
+    </div>
+    <button id="side-nav-close" class="drawer-close" type="button" aria-label="Close navigation">×</button>
+  </div>
+  <div class="side-nav-main">
+    <p class="side-nav-kicker">Sections</p>
+    <nav class="side-items" aria-label="Sections">
+      <a class="side-item disabled" href="#" aria-disabled="true">Overview</a>
+      <a class="side-item disabled" href="#" aria-disabled="true">Engineering &amp; Delivery</a>
+      <a class="side-item active" href="#main" aria-current="page">Product</a>
+      <a class="side-item disabled" href="#" aria-disabled="true">AI Services</a>
+      <a class="side-item disabled" href="#" aria-disabled="true">Business</a>
+    </nav>
+  </div>
+</aside>
+
+<aside class="drawer drawer-cell" id="drawer-cell" role="dialog" aria-labelledby="drawer-cell-title" hidden>
+  <div class="drawer-head">
+    <div class="drawer-head-text">
+      <h2 id="drawer-cell-title" class="drawer-title">Company list</h2>
+      <p id="cell-title" class="drawer-cell-label"></p>
+      <p id="people-title" class="detail-title"></p>
+    </div>
+    <button id="drawer-cell-close" class="drawer-close" type="button" aria-label="Close company list">×</button>
+  </div>
+  <div class="drawer-body">
+    <input id="search" class="drawer-search" type="search" placeholder="email or company name…" autocomplete="off" aria-label="Filter users by email or company name">
+    <p id="cell-shares" class="drawer-insights"></p>
+    <p id="people-status" class="status" role="status">No cell chosen. Click a heatmap cell to list users.</p>
+    <div id="people-detail" hidden>
+      <ul id="people-list" class="user-list"></ul>
+    </div>
+  </div>
+</aside>
+
+<aside class="drawer drawer-company" id="drawer-company" role="dialog" aria-labelledby="company-name" hidden>
+  <div class="drawer-head">
+    <div class="drawer-head-text">
+      <h2 class="drawer-title">Company drill</h2>
+      <h3 id="company-name" class="company-name"></h3>
+    </div>
+    <button id="drawer-company-close" class="drawer-close" type="button" aria-label="Close company drill">×</button>
+  </div>
+  <div class="drawer-body">
+    <p id="company-status" class="status" role="status">No company chosen. Pick a company in the cell list.</p>
+    <div id="company-detail" hidden>
+      <p id="company-path" class="path"></p>
+      <p id="company-stats" class="stats"></p>
+      <h4 class="subhead">Actions by week</h4>
+      <div class="table-wrap slim">
+        <table id="company-byweek">
+          <thead><tr><th scope="col">Week</th><th scope="col">Actions</th><th scope="col">Upload</th><th scope="col">Txn</th><th scope="col">Sync</th><th scope="col">Recon</th></tr></thead>
+          <tbody id="company-byweek-body"></tbody>
+        </table>
+      </div>
+      <h4 class="subhead">Actions by event</h4>
+      <div class="table-wrap slim">
+        <table id="company-byevent">
+          <thead><tr><th scope="col">Event</th><th scope="col">Count</th></tr></thead>
+          <tbody id="company-byevent-body"></tbody>
+        </table>
+      </div>
+      <h4 class="subhead">Timeline</h4>
+      <p class="caption">Newest first · page 100</p>
+      <p id="timeline-count" class="timeline-count"></p>
+      <ol id="timeline-list" class="timeline"></ol>
+      <div class="timeline-nav">
+        <button id="timeline-newest" type="button">Newest</button>
+        <button id="timeline-older" type="button">Older</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script src="fixtures.js"></script>
+<script src="prototype.js?v=12"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+[project]
+name = "product-metrics-fetcher"
+version = "0.1.0"
+description = "Copy Mixpanel events into Postgres for Korefi product metrics"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.27",
+  "psycopg[binary]>=3.2",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+metrics-fetcher = "fetcher.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]

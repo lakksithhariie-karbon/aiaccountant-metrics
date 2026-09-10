@@ -1,0 +1,78 @@
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  color: #1a1a1a;
+  background: #fafafa;
+  line-height: 1.45;
+}
+header, main, footer { max-width: 1100px; margin: 0 auto; padding: 16px 20px; }
+header { border-bottom: 1px solid #ddd; }
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+h2 { font-size: 1.15rem; margin-top: 28px; }
+.subhead { font-size: 1rem; margin: 18px 0 6px; }
+.subtitle { margin: 0; color: #555; }
+.health { font-weight: bold; }
+.health.error { color: #a00; }
+.hint { color: #555; max-width: 72ch; }
+.status { margin: 8px 0; min-height: 1.2em; }
+.status.error { color: #a00; font-weight: bold; }
+.empty { border: 1px solid #ccc; background: #fff; padding: 16px; border-radius: 6px; }
+.example { color: #333; margin: 10px 0 0; }
+.table-wrap { overflow-x: auto; background: #fff; border: 1px solid #ddd; border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { border: 1px solid #e0e0e0; padding: 6px 8px; text-align: center; }
+thead th { background: #f0f0f0; position: sticky; top: 0; }
+tbody th[scope="row"] { background: #f7f7f7; text-align: left; white-space: nowrap; }
+.n-col { color: #555; }
+.cell { padding: 0; min-width: 76px; }
+.cell.missing { color: #bbb; padding: 6px 8px; }
+.cell-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  width: 100%; border: 0; background: transparent; cursor: pointer;
+  padding: 6px 8px; font-size: 0.85rem; color: inherit;
+}
+.cell-btn:hover, .cell-btn:focus-visible { outline: 2px solid #2a7a3a; outline-offset: -2px; }
+.cell-btn.selected { outline: 2px solid #1f6f33; outline-offset: -2px; }
+.cell-btn .count { font-weight: bold; font-variant-numeric: tabular-nums; }
+.cell-btn .rate { font-variant-numeric: tabular-nums; }
+.detail-title { font-weight: bold; font-size: 1.05rem; }
+.insight { color: #333; max-width: 80ch; }
+.filter-label { display: block; margin: 8px 0 10px; color: #333; font-size: 0.9rem; }
+.filter-label input {
+  display: block; margin-top: 4px; width: 100%; max-width: 420px;
+  padding: 6px 8px; font-size: 0.9rem; font-family: inherit;
+  border: 1px solid #bbb; border-radius: 4px; background: #fff; color: inherit;
+}
+.user-list { list-style: none; margin: 0; padding: 0; background: #fff; border: 1px solid #ddd; }
+.user-block { padding: 12px 14px; border-bottom: 1px solid #eee; }
+.user-block:last-child { border-bottom: 0; }
+.user-label { font-size: 1rem; margin: 0 0 4px; overflow-wrap: anywhere; }
+.user-meta { color: #333; font-size: 0.85rem; margin: 0 0 6px; font-variant-numeric: tabular-nums; }
+.company-list { list-style: none; margin: 0; padding: 0 0 0 14px; }
+.company-list li { margin: 8px 0 10px; }
+.company-uuid { color: #888; font-size: 0.78rem; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.company-meta { color: #333; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.link-btn {
+  border: 0; background: none; padding: 0; cursor: pointer;
+  color: #0b5cad; text-decoration: underline; font-size: inherit; font-weight: 600;
+  font-variant-numeric: tabular-nums; text-align: left;
+}
+.link-btn:hover, .link-btn:focus-visible { color: #084a8c; }
+.path { font-variant-numeric: tabular-nums; max-width: 90ch; }
+.stats { color: #333; font-variant-numeric: tabular-nums; max-width: 90ch; }
+#company-byweek td, #company-byevent td { font-variant-numeric: tabular-nums; }
+#company-byevent td:first-child { text-align: left; }
+.timeline-count { color: #333; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.timeline { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 12px 12px 12px 32px; max-height: 480px; overflow-y: auto; }
+.timeline li { padding: 2px 0; font-variant-numeric: tabular-nums; }
+.ev-time { color: #333; }
+.ev-name { font-weight: 600; }
+.timeline-nav { margin: 8px 0 0; display: flex; gap: 8px; }
+.timeline-nav button {
+  padding: 6px 14px; font-size: 0.9rem; font-family: inherit; cursor: pointer;
+  border: 1px solid #888; border-radius: 4px; background: #fff; color: #1a1a1a;
+}
+.timeline-nav button:hover:not(:disabled), .timeline-nav button:focus-visible:not(:disabled) { outline: 2px solid #1f6f33; outline-offset: 1px; }
+.timeline-nav button:disabled { opacity: 0.45; cursor: default; }
+footer { color: #777; font-size: 0.85rem; border-top: 1px solid #ddd; margin-top: 24px; }

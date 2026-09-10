@@ -1,0 +1,56 @@
+# --- Secrets and environment files -------------------------------------------
+# Never commit real values. Template files (.env.example) are allowed.
+.env
+.env.*
+!.env.example
+
+# --- Python -------------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# --- Node / Next.js -----------------------------------------------------------
+node_modules/
+web/node_modules/
+.next/
+web/.next/
+out/
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+.vercel
+
+# Local development TLS material. Never commit private keys.
+web/certificates/
+
+# --- Local secrets scratch space ----------------------------------------------
+.secrets/
+
+# --- Logs ---------------------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# --- OS junk ------------------------------------------------------------------
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Editor / IDE junk --------------------------------------------------------
+.idea/
+*.swp
+*.swo
+*~
+
+# Local Git metadata used in this mounted workspace.
+.aia-product.git/

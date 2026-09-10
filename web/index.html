@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cohort Retention Explorer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+<h1>Cohort Retention Explorer</h1>
+<p class="subtitle">Weekly activation cohorts and 8-week value retention.</p>
+<p id="health" class="health" role="status">Checking service status…</p>
+</header>
+<main>
+<section aria-labelledby="heatmap-heading">
+<h2 id="heatmap-heading">Retention heatmap</h2>
+<p class="hint">Rows are activation cohort weeks (oldest first). Columns are weeks since activation (0–8). Each cell shows retained / cohort size and the retention rate. Choose a cell to list its people.</p>
+<div id="heatmap-status" class="status" role="status"></div>
+<div class="table-wrap">
+<table id="heatmap" hidden>
+<thead>
+<tr>
+<th scope="col">Cohort week</th>
+<th scope="col">n</th>
+<th scope="col">+0</th>
+<th scope="col">+1</th>
+<th scope="col">+2</th>
+<th scope="col">+3</th>
+<th scope="col">+4</th>
+<th scope="col">+5</th>
+<th scope="col">+6</th>
+<th scope="col">+7</th>
+<th scope="col">+8</th>
+</tr>
+</thead>
+<tbody id="heatmap-body"></tbody>
+</table>
+</div>
+<p id="heatmap-example" class="example" hidden></p>
+<p id="heatmap-empty" class="empty" hidden>No retention data yet. The heatmap is empty — the scheduled rebuild may not have run. Try reloading in a little while.</p>
+</section>
+
+<section aria-labelledby="cell-heading">
+<h2 id="cell-heading">People in this cell</h2>
+<div id="cell-status" class="status" role="status">No cell chosen. Choose a heatmap cell above.</div>
+<div id="cell-detail" hidden>
+<p id="cell-title" class="detail-title"></p>
+<p id="cell-insight" class="insight"></p>
+<label class="filter-label" for="cell-filter">Filter
+<input id="cell-filter" type="search" placeholder="email or company name…" autocomplete="off">
+</label>
+<ul id="cell-users" class="user-list"></ul>
+</div>
+</section>
+
+<section aria-labelledby="company-heading">
+<h2 id="company-heading">Company drill</h2>
+<div id="company-status" class="status" role="status">No company chosen. Pick a company in the cell list.</div>
+<div id="company-detail" hidden>
+<p id="company-title" class="detail-title"></p>
+<p id="company-path" class="path"></p>
+<p id="company-stats" class="stats"></p>
+<h3 class="subhead">Actions by week</h3>
+<div class="table-wrap">
+<table id="company-byweek">
+<thead>
+<tr>
+<th scope="col">Week</th>
+<th scope="col">Actions</th>
+<th scope="col">Upload</th>
+<th scope="col">Txn</th>
+<th scope="col">Sync</th>
+<th scope="col">Recon</th>
+</tr>
+</thead>
+<tbody id="company-byweek-body"></tbody>
+</table>
+</div>
+<h3 class="subhead">Actions by event</h3>
+<div class="table-wrap">
+<table id="company-byevent">
+<thead>
+<tr>
+<th scope="col">Event</th>
+<th scope="col">Count</th>
+</tr>
+</thead>
+<tbody id="company-byevent-body"></tbody>
+</table>
+</div>
+<h3 class="subhead">Timeline</h3>
+<p class="hint">Newest events first. One page replaces the last; at most 200 rows are ever in the page at once.</p>
+<p id="timeline-count" class="timeline-count"></p>
+<ol id="timeline-list" class="timeline"></ol>
+<div class="timeline-nav">
+<button id="timeline-newest" type="button" hidden>Newest</button>
+<button id="timeline-older" type="button" hidden>Older</button>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<p>Data comes from the local service on this same origin.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
